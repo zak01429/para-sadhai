@@ -1,0 +1,488 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    height:100vh;
+    background:linear-gradient(to top,#ffd8e8 0%,#ffc7d9 25%,#ffb3c7 55%,#ff9db5 100%);
+}
+
+/* Fondo */
+
+.sky{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-5;
+}
+
+.sun{
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    left:50%;
+    top:60px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle,#fff8a8,#ffb4b4);
+    box-shadow:0 0 90px rgba(255,180,180,.8);
+    animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:translateX(-50%) scale(1);
+}
+
+50%{
+transform:translateX(-50%) scale(1.05);
+}
+
+100%{
+transform:translateX(-50%) scale(1);
+}
+
+}
+
+.cloud{
+    position:absolute;
+    background:white;
+    border-radius:50px;
+    opacity:.85;
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    background:white;
+    border-radius:50%;
+}
+
+.cloud1{
+    width:130px;
+    height:45px;
+    top:90px;
+    left:-180px;
+    animation:cloudMove 40s linear infinite;
+}
+
+.cloud1::before{
+    width:60px;
+    height:60px;
+    top:-20px;
+    left:15px;
+}
+
+.cloud1::after{
+    width:70px;
+    height:70px;
+    top:-30px;
+    right:18px;
+}
+
+.cloud2{
+    width:170px;
+    height:55px;
+    top:170px;
+    left:-250px;
+    animation:cloudMove 55s linear infinite;
+}
+
+.cloud2::before{
+    width:80px;
+    height:80px;
+    top:-30px;
+    left:20px;
+}
+
+.cloud2::after{
+    width:90px;
+    height:90px;
+    top:-35px;
+    right:25px;
+}
+
+@keyframes cloudMove{
+
+from{
+left:-250px;
+}
+
+to{
+left:110%;
+}
+
+}
+
+/* Pasto */
+
+.grass{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:170px;
+    background:linear-gradient(#46b96d,#228b22);
+}
+
+/* Árbol */
+
+.tree-container{
+    position:absolute;
+    bottom:120px;
+    left:18%;
+}
+
+.tree{
+    position:relative;
+    width:350px;
+    height:470px;
+}
+
+.trunk{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:75px;
+    height:250px;
+    background:linear-gradient(#6f3f22,#8d5b32);
+    border-radius:20px;
+}
+
+.branch{
+    position:absolute;
+    background:#7a4928;
+    border-radius:20px;
+}
+
+.branch1{
+    width:95px;
+    height:18px;
+    bottom:170px;
+    left:70px;
+    transform:rotate(-35deg);
+}
+
+.branch2{
+    width:95px;
+    height:18px;
+    bottom:190px;
+    right:70px;
+    transform:rotate(35deg);
+}
+
+.branch3{
+    width:80px;
+    height:18px;
+    bottom:240px;
+    left:135px;
+    transform:rotate(-8deg);
+}
+
+.leaves{
+    position:absolute;
+    width:260px;
+    height:210px;
+    background:#ff8db4;
+    border-radius:50%;
+    left:45px;
+    bottom:220px;
+    box-shadow:
+    -90px 50px 0 #ff8db4,
+    90px 50px 0 #ff8db4,
+    0 -70px 0 #ff8db4,
+    -50px -25px 0 #ffa6c6,
+    55px -20px 0 #ffa6c6;
+}
+
+/* Contador */
+
+.counter{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(8px);
+    padding:15px 22px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.counter h2{
+    color:#ff4f7b;
+    margin-bottom:8px;
+}
+
+#counter{
+    color:#444;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* Frases */
+
+.phrase{
+    position:absolute;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:0 4px 10px black;
+    opacity:0;
+    transition:.8s;
+}
+
+/* ===== SOBRE ===== */
+
+.envelope-container{
+    position:absolute;
+    right:8%;
+    bottom:120px;
+    width:320px;
+    height:220px;
+    perspective:1200px;
+}
+
+.envelope{
+    position:relative;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+    transform-style:preserve-3d;
+}
+
+.envelope-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ffd9e6;
+    border-radius:12px;
+    border:2px solid #ffb6c8;
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+}
+
+.envelope-flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ffb6c8;
+    clip-path:polygon(0 0,100% 0,50% 65%);
+    transform-origin:top;
+    transition:.8s;
+    z-index:5;
+}
+
+.letter{
+    position:absolute;
+    left:5%;
+    bottom:10px;
+    width:90%;
+    height:480px;
+    background:#fff;
+    border-radius:15px;
+    padding:20px;
+    overflow-y:auto;
+    transform:translateY(100%);
+    opacity:0;
+    transition:.8s;
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+    z-index:10;
+}
+
+.envelope.open .envelope-flap{
+    transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+    transform:translateY(-55%);
+    opacity:1;
+}
+
+.letter h1,
+.letter h2,
+.letter h3{
+    text-align:center;
+    color:#ff4f7b;
+    margin-bottom:15px;
+}
+
+.letter-text{
+    color:#444;
+    line-height:1.7;
+    font-size:16px;
+}
+
+.letter-text p{
+    margin-bottom:15px;
+}
+
+/* ===== BOTÓN ===== */
+
+#musicBtn{
+    position:absolute;
+    left:20px;
+    bottom:20px;
+    padding:14px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff4f7b;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 10px 20px rgba(0,0,0,.25);
+}
+
+#musicBtn:hover{
+    transform:scale(1.08);
+    background:#ff2d63;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    position:absolute;
+    bottom:5px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:15px;
+    text-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+
+/* ===== CORAZONES ===== */
+
+.heart{
+    position:absolute;
+    top:-30px;
+    animation:heartFall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes heartFall{
+
+to{
+    transform:translateY(110vh);
+    opacity:0;
+}
+
+}
+
+/* ===== PÉTALOS ===== */
+
+.petal{
+    position:absolute;
+    top:-20px;
+    animation:petalFall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes petalFall{
+
+0%{
+    transform:translateX(0) rotate(0deg);
+}
+
+50%{
+    transform:translateX(40px) rotate(180deg);
+}
+
+100%{
+    transform:translateX(-40px) translateY(110vh) rotate(360deg);
+    opacity:0;
+}
+
+}
+
+/* ===== FLORES ===== */
+
+.flower{
+    position:absolute;
+    font-size:22px;
+}
+
+/* ===== ESTRELLAS ===== */
+
+.star{
+    position:absolute;
+    color:white;
+    animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+
+0%{
+opacity:.2;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:.2;
+}
+
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.tree-container{
+    left:8%;
+    transform:scale(.75);
+}
+
+.envelope-container{
+    right:3%;
+    transform:scale(.82);
+}
+
+.counter{
+    transform:scale(.9);
+}
+
+.phrase{
+    font-size:22px;
+}
+
+}
+
+@media(max-width:600px){
+
+.tree-container{
+    left:-5%;
+    transform:scale(.6);
+}
+
+.envelope-container{
+    right:-5%;
+    bottom:90px;
+    transform:scale(.68);
+}
+
+.counter{
+    width:180px;
+    font-size:14px;
+}
+
+#musicBtn{
+    font-size:14px;
+    padding:10px 18px;
+}
+
+footer{
+    font-size:12px;
+}
+
+}
